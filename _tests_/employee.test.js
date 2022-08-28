@@ -49,7 +49,7 @@ describe('Employee class', () => {
             expect(cb).toThrowError(err);
         });
         it("should throw an error if 'email' is not provided", () => {
-            const cb = () => new Employee("Tammy", 1,);
+            const cb = () => new Employee("Tammy", 1);
             const err = new Error("Expected parameter 'email' to be a non-empty string");
       
             expect(cb).toThrowError(err);
@@ -69,11 +69,18 @@ describe('Employee class', () => {
             expect(employee.getId()).toBe(1)
         })
     })
-    describe('getName method', () => {
+    describe('getEmail method', () => {
         it("Returns the employee email as a string", () => {
             const employee = new Employee("Tammy", 1, "tammy@fakemail.com")
 
             expect(employee.getEmail()).toBe("tammy@fakemail.com")
+        })
+    })
+    describe('getRole method', () => {
+        it("Returns the employees role", () => {
+            const employee = new Employee("Tammy", 1, "tammy@fakemail.com")
+
+            expect(employee.getRole()).toBe("Employee")
         })
     })
 });
