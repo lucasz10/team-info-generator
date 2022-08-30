@@ -1,3 +1,8 @@
+const Employee = require('../lib/employee')
+const Engineer = require('../lib/engineer')
+const Intern = require('../lib/intern')
+const Manager = require('../lib/manager')
+
 //TODO: Create function to write file after manager information has been entered
 //This should include the head element as well and the creation of the top of the HTML file
 
@@ -5,3 +10,5 @@
 //This should create cards containing the employee information
 
 //TODO: Create function to append file with closing elements after the user terminates the script
+
+module.exports = generateHTML;
