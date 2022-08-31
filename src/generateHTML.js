@@ -2,13 +2,36 @@ const Employee = require('../lib/employee')
 const Engineer = require('../lib/engineer')
 const Intern = require('../lib/intern')
 const Manager = require('../lib/manager')
+const fs = require('fs');
 
-//TODO: Create function to write file after manager information has been entered
-//This should include the head element as well and the creation of the top of the HTML file
+const generateHTML = (userInput) => {
+   
+    fs.writeFile(
+        "./dist/index.html",
+        `<!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Team Information</title>
+        </head>
+        <body>
+            <header></header>
+            <div id="employees"></div>
+        </body>
+        </html>`,
+        (err) => err ? console.errror(err) : console.log('File created successsfully!')
+    )
 
-//TODO: Create function to append file after employee information has been entered
-//This should create cards containing the employee information
+    for(i = 0; i < dataInput.length; i++){
+        
+        switch (userInput.getRole()) {
+            case 'Manager':
 
-//TODO: Create function to append file with closing elements after the user terminates the script
+        }
+         
+    }
+}
 
 module.exports = generateHTML;

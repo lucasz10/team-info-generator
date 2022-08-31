@@ -1,42 +1,43 @@
 const inquirer = require('inquirer');
-const fs = require('fs');
 const generateHTML = require('./src/generateHTML.js');
 const Manager = require('./lib/manager.js');
+const Intern = require('./lib/intern.js');
+const Engineer = require('./lib/engineer.js');
 var teamMembers = [];
+
 // Function to initialize program and start basis of 
 function init() {
-    const initQuestions = [
-        {
-            type: 'input',
-            message: 'What is the name of the team manager?',
-            name: 'manName'
-        },
-        {
-            type: 'input',
-            message: 'What is their Employee ID?',
-            name: 'manID'
-        },
-        {
-            type: 'input',
-            message: 'What is their email address?',
-            name: 'manEmail'
-        },
-        {
-            type: 'input',
-            message: 'What is the office number that they manage?',
-            name: 'manOffice'
-        }
-    ]
     inquirer
-        .prompt(initQuestions)
+        .prompt(
+            [{
+                type: 'input',
+                message: 'What is the name of the team manager?',
+                name: 'manName'
+            },
+            {
+                type: 'input',
+                message: 'What is their Employee ID?',
+                name: 'manID'
+            },
+            {
+                type: 'input',
+                message: 'What is their email address?',
+                name: 'manEmail'
+            },
+            {
+                type: 'input',
+                message: 'What is the office number that they manage?',
+                name: 'manOffice'
+            }]
+        )
         .then(function (data) {
-            const manager = new Manager(data.manName, data.manID, data.manEmail, data.manOffice)
+            const manager = new Manager(data.manName, parseInt(data.manID, 10), data.manEmail, parseInt(data.manOffice, 10))
             teamMembers.push(manager)
-        })
-    checkTeam();
+            checkTeam();
+        })  
 }
 
-//TODO: Create inquirer to ask if user wants to add additional employees. Terminate program if user selects no
+// Create inquirer to ask if user wants to add additional employees. Terminate program if user selects no
 function checkTeam() {
     inquirer
         .prompt(
@@ -51,12 +52,12 @@ function checkTeam() {
             if(data.memberConf === 'Yes'){
                 enterEmployee();
             } else {
-                endProgram();
+                generateHTML(teamMembers);
             }
         })
 }
 
-//TODO: Create inquirer to asking for input on new employee
+// Verifies employee type before moving to next step
 function enterEmployee() {
     inquirer
         .prompt(
@@ -79,3 +80,68 @@ function enterEmployee() {
             }
         })
 }
+
+function addEngineer() {
+    inquirer
+        .prompt(
+            [{
+                type: 'input',
+                message: 'What is the name of the employee?',
+                name: 'empName'
+            },
+            {
+                type: 'input',
+                message: 'What is their ID number?',
+                name: 'empID'
+            },
+            {
+                type: 'input',
+                message: 'What is their email?',
+                name: 'empEmail'
+            },
+            {
+                type: 'input',
+                message: 'What is their GitHub URL?',
+                name: 'empGitHub'
+            }]
+        )
+        .then(function (data) {
+            const engineer = new Engineer(data.empName, data.empID, data.empEmail, data.empGitHub)
+            teamMembers.push(engineer);
+            checkTeam();
+        })   
+}
+
+function addIntern() {
+    inquirer
+        .prompt(
+            [{
+                type: 'input',
+                message: 'What is the name of the employee?',
+                name: 'empName'
+            },
+            {
+                type: 'input',
+                message: 'What is their ID number?',
+                name: 'empID'
+            },
+            {
+                type: 'input',
+                message: 'What is their email?',
+                name: 'empEmail'
+            },
+            {
+                type: 'input',
+                message: 'What school do they attend?',
+                name: 'empSchool'
+            }]
+        )
+        .then(function (data) {
+            const intern = new Intern(data.empName, data.empID, data.empEmail, data.empSchool)
+            teamMembers.push(intern);
+            checkTeam();
+        })
+
+}
+
+init();
