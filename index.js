@@ -106,7 +106,7 @@ function addEngineer() {
             }]
         )
         .then(function (data) {
-            const engineer = new Engineer(data.empName, data.empID, data.empEmail, data.empGitHub)
+            const engineer = new Engineer(data.empName, parseInt(data.empID, 10), data.empEmail, data.empGitHub)
             teamMembers.push(engineer);
             checkTeam();
         })   
@@ -137,7 +137,7 @@ function addIntern() {
             }]
         )
         .then(function (data) {
-            const intern = new Intern(data.empName, data.empID, data.empEmail, data.empSchool)
+            const intern = new Intern(data.empName, parseInt(data.empID, 10), data.empEmail, data.empSchool)
             teamMembers.push(intern);
             checkTeam();
         })
