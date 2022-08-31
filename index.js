@@ -3,6 +3,8 @@ const generateHTML = require('./src/generateHTML.js');
 const Manager = require('./lib/manager.js');
 const Intern = require('./lib/intern.js');
 const Engineer = require('./lib/engineer.js');
+
+//Variable to store all employees once added
 var teamMembers = [];
 
 // Function to initialize program and start basis of 
@@ -80,7 +82,7 @@ function enterEmployee() {
             }
         })
 }
-
+// Adds Questions specific for Engineers
 function addEngineer() {
     inquirer
         .prompt(
@@ -111,7 +113,7 @@ function addEngineer() {
             checkTeam();
         })   
 }
-
+// Asks questions specific for Interns
 function addIntern() {
     inquirer
         .prompt(
