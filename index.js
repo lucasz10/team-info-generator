@@ -103,7 +103,7 @@ function addEngineer() {
             },
             {
                 type: 'input',
-                message: 'What is their GitHub URL?',
+                message: 'What is their GitHub Username?',
                 name: 'empGitHub'
             }]
         )
