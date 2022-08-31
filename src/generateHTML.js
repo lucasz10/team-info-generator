@@ -44,7 +44,7 @@ const generateHTML = (userInput) => {
                         <ul class="list-group">
                             <li>ID: ${userInput[i].getId()}</li>
                             <li>Email: <a href="mailto:${userInput[i].getEmail()}">${userInput[i].getEmail()}</a></li>
-                            <li>Github: <a href="https://githum.com/${userInput[i].getGithub()}">${userInput[i].getGithub()}</a></li>
+                            <li>Github: <a href="https://github.com/${userInput[i].getGithub()}">${userInput[i].getGithub()}</a></li>
                         </ul>
                     </div>
                 </div>
