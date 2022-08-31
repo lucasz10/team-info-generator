@@ -41,4 +41,4 @@ There are unit tests included in the _tests_ folder. Go to your terminal and typ
 
 ## Demonstration Video
 
-You can find a sample video [here](youtube.com)
+You can find a sample video [here](https://youtu.be/tWyP1lQuOAQ)
